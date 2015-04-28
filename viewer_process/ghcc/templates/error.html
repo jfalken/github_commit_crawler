@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Error Page">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <title>Error</title>
+  </head>
+  
+  <body>
+   {% include 'navbar.html' %}
+
+   <br>
+   <div class="well">
+      <center>
+         <h2>I have a bad feeling about this</h2>
+         Something went horribly wrong. Please try again.
+      </center>
+    </div>
+
+    <div class="container">
+      <div class="row">
+      <div class="col-md-2"></div>
+       <div class="col-md-8">
+        <h1></h1>
+        <p class="lead"></p>
+        <center><img src="/static/images/darth.gif">
+        <h4><pre>{{message}}</pre></h4>
+        <div class="col-md-2"></div></center>
+        </div>
+      </div>
+    </div>
+   {% include 'footer.html' %}
+  </body>
+</html>

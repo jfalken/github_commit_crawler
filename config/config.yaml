@@ -1,0 +1,11 @@
+# used for the github audit
+github:
+    username: githubhandle
+    accesstoken: secret_access_token
+    org_name: org_name
+
+# Logfile Details
+log:
+    file: ghcc.log
+    format: '[%(asctime)s] [%(levelname)s] - %(message)s'
+    dateformat: '%Y-%m-%d %H:%M:%S'

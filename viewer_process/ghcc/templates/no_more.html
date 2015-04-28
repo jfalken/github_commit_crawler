@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Github Audit">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <title>GitHub Audit Results</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+   {% include 'navbar.html' %}
+
+   {% set pback = skip - limit %}
+   {% set pfwd = skip + limit %}
+   {% if pback < 0 %}
+      {% set pback = 0 %}
+   {% endif %}
+
+    <div class="navbar navbar-fixed-bottom navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/ghaudit?s={{pback}}&l={{limit}}">Page Backwards</a></li>
+            <li><a href="">Page Forward</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+   <br><br>
+   <div class="well">
+      <center>
+         <h2>GitHub Commit Crawler</h2>
+         No Results. Either nothing was found, or you've reached the end. Try <a href="/ghaudit?s={{pback}}&l={{limit}}">stepping back</a>. See the source repo for instructions on how to run.
+      </center>
+    </div>
+
+    {% include 'footer.html' %}
+    </body>
+</html>

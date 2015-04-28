@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Github Audit">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <title>ghcc info</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+   {% include 'navbar.html' %}
+
+   <br><br>
+   <div class="well">
+      <center>
+         <h2>GitHub Commit Crawler</h2>
+         The GitHub Commit Crawler (ghcc) finds all members of a GitHub organization and for each member finds the most recent 300 commits. The patch of those commits is then checked for keywords/credentials. Results are stored in mongodb and this web app provides a small interface to view those results. See the <code>Source</code> link in the navbar for more information.
+      </center>
+    </div>

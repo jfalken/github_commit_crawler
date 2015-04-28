@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Config Editor</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/styles/zenburn.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+   {% include 'navbar.html' %}
+   {% set c = config['github'] %}
+   {% if default_config %}
+     {% set token = "Enter Token" %}
+   {% else %}
+     {% set token = "" %}
+    {% endif %}
+
+   <br><br><br>
+      <div class="well">
+        <h4>Edit Configuration.</h4>
+        {% if default_config %}
+        <h3><code>You currently don't have a config setup!</code></h3>
+        {% endif %}
+        Edit your config file here.<br>
+        <code>GitHub Username</code>: Your Github Username<br>
+        <code>AccessToken</code>: Github Personal Access Token<br>
+        <code>Org_Name</code>: The org you wish to audit<br><br>
+        Hitting 'submit' will overwrite the existing config and restart the <code>ghcc</code> process. View the status on the <a href="/supervisor">Supervisor</a> page.
+      </div>
+
+    <div class="container">
+    <form class="form-horizontal" role="form" action="/config/update" method="POST">
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="username">Username:</label>
+        <div class="col-sm-10">
+          <input class="form-control" name="username" placeholder="{{c['username']}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="token">AccessToken:</label>
+        <div class="col-sm-10"> 
+          <input type="password" class="form-control" name="token" placeholder="{{token}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="orgname">Org_Name:</label>
+        <div class="col-sm-10"> 
+          <input class="form-control" name="orgname" placeholder="{{c['org_name']}}">
+        </div>
+      </div>
+      <div class="form-group"> 
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary">Submit and Restart Crawler</button>
+        </div>
+      </div>
+    </form>
+  </div>
+    <body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="15">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Supervisor Page</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/styles/zenburn.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+   {% include 'navbar.html' %}
+
+   <br><br><br>
+      <div class="well">
+        <h4>Supervisor Process Status.</h4>
+        List status of all processes here. Restart the <code>ghcc</code> process if you changed a config, or if its no longer running. 
+      </div>
+
+    <div class="container" class="col-md-2">
+        <table id="results_table" class="table table-striped table-condensed" >
+        <thead>
+          <tr class="info">
+            <th>Process</th>
+            <th>Description</th>
+            <th>State</th>
+            <th>Proc Logs</th>
+            <th>Restart</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in SXR.get_procs_info() %}
+            <tr>
+              <td><code>{{ i['name'] }}</code></td>
+              <td><small>{{ i['description'] }}</small></td>
+              <td>
+                  {# states documented here http://supervisord.org/subprocess.html#process-states #}
+                  {% if i['statename'] == 'FATAL' %}
+                  <button type="button" class="btn-xs btn-danger">
+                  {% elif i['statename'] in ['RUNNING', 'STARTING'] %}
+                  <button type="button" class="btn-xs btn-success">
+                  {% elif i['statename'] in ['STOPPING', 'STOPPED'] %}
+                  {% else %}
+                  <button type="button" class="btn-xs btn-info">
+                  {% endif %}
+                   {{ i['statename'] }}
+                  </button></td>
+              <td><a href="/supervisor/getlogs?proc={{i['name']}}">
+                  <i class="fa fa-file-text-o"></i>
+              </td>
+              <td><center><a href="/supervisor/restart?proc={{i['name']}}"><i class="fa fa-refresh"></i></a></center></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+        </table>
+    </div>
+    <div class="container">
+    <p>
+      If all processes are in the <button class="btn-xs btn-success">RUNNING</button> state, view crawler results by visting the <a href="/ghaudit">HOME</a> page, or check the <a href="/logs">Crawler Logs</a> to see current status.<br>
+      If something is not working, check your <a href="/config">config</a>.<br>
+    </p>
+    </div>
+    {% include 'footer.html' %}
+    <body>
+</html>
