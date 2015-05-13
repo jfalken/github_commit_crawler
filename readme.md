@@ -1,5 +1,13 @@
 # GitHub Commit Crawler
 
+# TEMP PRIVATE REPO
+
+This repo will be open sourced after Chris and Andreas' NOLA BSides talk.
+
+It exists here now only for dev work and comments.
+
+You can see a live version of this app on our current security dashboard at: [https://security-dashboard.corp.mongodb.com/ghaudit](https://security-dashboard.corp.mongodb.com/ghaudit)
+
 ## What is this?
 
 The GitHub Commit Crawler (ghcc) is a tool that enumerates members of a github organization, looks for their public commits and parses those commits for keywords/regexes that may contain sensitive information (e.g., API keys).
@@ -62,7 +70,15 @@ When you run start the app, it'll ask you for this info.
 
 #### Via Dockerhub
 
-You can `docker pull jfalken/ghcc` (NOT THERE YET - IGNORE THIS INSTRUCTION), the continue w/ the next step (Edit Config...)
+[Dockerhub Link](https://registry.hub.docker.com/u/jfalken/github-commit-crawler/) 
+
+First, pull Dockerfile from Dockerhub
+
+1. `docker pull jfalken/github-commit-crawler`
+
+Then, run the image to create a container, mapping a local port (5000) to the container's exposed port (5000)
+
+2. `docker run -d -p 5000:5000 jfalken/github-commit-crawler`
 
 #### Via Github
 
@@ -77,6 +93,8 @@ Edit the file `ghcc_process/libs/keywords.py`, to include any additional keyword
 ### Docker
 
 The Docker container will get you started quickly. 
+
+If you've used `docker pull` to install, you can skip step this as your image is already built; scroll down to `Connecting`.
 
 1. Docker needs to be installed, see [docker installation guides](https://docs.docker.com/installation/)
 2. Build the Docker Image
@@ -136,6 +154,8 @@ CONTAINER ID        IMAGE                  COMMAND                CREATED       
 081c48ef6468        jfalken/ghcc:latest   "/entrypoint.sh /usr   3 seconds ago       Up 2 seconds        27017/tcp, 5000/tcp, 0.0.0.0:8080->500/tcp   gloomy_davinci
 ```
 
+#### Connecting 
+
 This is now running; you can connect to the web UI via the exposed port; that is `http://localhost:8080`. If you are using `boot2docker`, you need to find the local IP via `boot2docker ip`
 
 #### Initial Config
@@ -173,6 +193,11 @@ Results will go into you local mongodb database.
 * We only check push_events. Not others, yet
 * We don't look at public gists yet.
 
+## Contributing and Issues
+
+For issues, please open a GitHub issue.
+
+To contribute, please fork and submit a PR.
 
 ## Troubleshooting and Misc
 
@@ -195,24 +220,4 @@ Results will go into you local mongodb database.
  - The crawler runs once when conatiner starts, and it runs once. If u want this run continously, you could stop/start the container every X minutes via an external process, or modify the ghcc scripts.
 
 * We dont do deduplication on anything. So you'll see multiple hits on the same file if multiple keywords match.
-
-## Contributing
-
-Issues should be created using GitHub issues. If you have an addition, please fork and submit a pull request.
-
-## License 
-
-Copyright 2015 Chris Sandulow
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
 
