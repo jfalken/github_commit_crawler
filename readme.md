@@ -133,7 +133,7 @@ $ sudo docker run -d -p 5000:5000 1eed
 
 We use `-d` to detach the container and let it run in the background
 
-We use `-p 8080:5000` to map `:8080` on the localhost to the exposted port `:5000` of the container
+We use `-p 5000:5000` to map `:5000` on the localhost to the exposted port `:5000` of the container
 
 and lastly `1eed` is the image id we wish to run; note we don't need to use the full ID. Just something that is unambiguous.
 
@@ -143,12 +143,12 @@ We can confirm this is running with `sudo docker ps`
 $ docker ps
 
 CONTAINER ID        IMAGE                  COMMAND                CREATED             STATUS              PORTS                                        NAMES
-081c48ef6468        jfalken/ghcc:latest   "/entrypoint.sh /usr   3 seconds ago       Up 2 seconds        27017/tcp, 5000/tcp, 0.0.0.0:8080->500/tcp   gloomy_davinci
+081c48ef6468        jfalken/ghcc:latest   "/entrypoint.sh /usr   3 seconds ago       Up 2 seconds        27017/tcp, 5000/tcp, 0.0.0.0:5000->500/tcp   gloomy_davinci
 ```
 
 #### Connecting 
 
-This is now running; you can connect to the web UI via the exposed port; that is `http://localhost:8080`. If you are using `boot2docker`, you need to find the local IP via `boot2docker ip`
+This is now running; you can connect to the web UI via the exposed port; that is `http://localhost:5000`. If you are using `boot2docker`, you need to find the local IP via `boot2docker ip`
 
 #### Initial Config
 
