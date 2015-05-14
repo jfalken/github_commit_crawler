@@ -221,3 +221,23 @@ To contribute, please fork and submit a PR.
 
 * We dont do deduplication on anything. So you'll see multiple hits on the same file if multiple keywords match.
 
+## Contributing
+
+Issues should be created using GitHub issues. If you have an addition, please fork and submit a pull request.
+
+## License 
+
+Copyright 2015 Chris Sandulow
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
++
