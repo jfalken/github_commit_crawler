@@ -1,13 +1,5 @@
 # GitHub Commit Crawler
 
-# TEMP PRIVATE REPO
-
-This repo will be open sourced after Chris and Andreas' NOLA BSides talk.
-
-It exists here now only for dev work and comments.
-
-You can see a live version of this app on our current security dashboard at: [https://security-dashboard.corp.mongodb.com/ghaudit](https://security-dashboard.corp.mongodb.com/ghaudit)
-
 ## What is this?
 
 The GitHub Commit Crawler (ghcc) is a tool that enumerates members of a github organization, looks for their public commits and parses those commits for keywords/regexes that may contain sensitive information (e.g., API keys).
