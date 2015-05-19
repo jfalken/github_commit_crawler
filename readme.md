@@ -58,7 +58,7 @@ Note: the user must be a member of the organization you are trying to audit.
 
 When you run start the app, it'll ask you for this info.
 
-### Installation
+### Installation Process
 
 #### Installation via Dockerhub
 
