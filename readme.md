@@ -17,18 +17,14 @@ Within MongoDB, the document looks like:
 ```js
 {
   "_id": ObjectId("54a6f232a0b7f9f39eb749b0"),
-  "blob": 
-    "https://github.com/jfalken/audit_test/blob/e69279825940f4a562300f75f00dab864a91bd1e/audit_test2.txt",
+  "blob": "https://github.com/jfalken/audit_test/blob/e69279825940f4a562300f75f00dab864a91bd1e/audit_test2.txt",
   "audit_date": ISODate("2015-01-02T19:32:01.992Z"),
-  "commit_url": 
-    "https://api.github.com/repos/jfalken/audit_test/commits/e69279825940f4a562300f75f00dab864a91bd1e",
+  "commit_url": "https://api.github.com/repos/jfalken/audit_test/commits/e69279825940f4a562300f75f00dab864a91bd1e",
   "uid": "jfalken-2490741299",
   "author": "jfalken",
   "matched": "BEGIN RSA PRIVATE KEY",
-  "html_url": 
-    "https://github.com/jfalken/audit_test/commit/e69279825940f4a562300f75f00dab864a91bd1e",
-  "string": 
-    "@@ -1,2 +1,2 @@\n-BEGIN RSA PRIVATE KEY\n+BEGIN RSA PRIVATE KEY2\n sample.\n\\ No newline at end of file"
+  "html_url": "https://github.com/jfalken/audit_test/commit/e69279825940f4a562300f75f00dab864a91bd1e",
+  "string": "@@ -1,2 +1,2 @@\n-BEGIN RSA PRIVATE KEY\n+BEGIN RSA PRIVATE KEY2\n sample.\n\\ No newline at end of file"
 }
 ```
 
@@ -101,18 +97,14 @@ If you've used `docker pull` to install, you can skip step this as your image is
 1. Docker needs to be installed, see [docker installation guides](https://docs.docker.com/installation/)
 2. Build the Docker Image
    
-   From the directory with the `Dockerfile`:
-   
-```
-sudo docker build -t jfalken/ghcc .
-```
+   From the directory with the `Dockerfile`, `sudo docker build -t jfalken/ghcc .`
    
    You can use a different tag (-t) if you wish.
    
    This will build the image; it should take a few minutes. The output should look like:
    
 ```bash
-Sending build context to Docker daemon
+ Sending build context to Docker daemon
 Step 0 : FROM mongo:latest
 Step 1 : MAINTAINER jfalken <chris.sandulow@gmail.com>
 Step 2 : RUN apt-get update && apt-get upgrade -y && apt-get install -y python   python-dev   python-distribute   python-pip   libyaml-dev   supervisor &&   easy_install -U pip
