@@ -140,7 +140,7 @@ $ sudo docker run -d -p 5000:5000 1eed
    We use `-p 5000:5000` to map `:5000` on the localhost to the exposted port `:5000` of the container
    and lastly `1eed` is the image id we wish to run; note we don't need to use the full ID. Just something that is unambiguous.
 
-   We can confirm this is running with `sudo docker ps`
+We can confirm this is running with `sudo docker ps`
 
 ```bash
 $ docker ps
