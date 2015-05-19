@@ -52,7 +52,7 @@ This script requires a Github [personal access token](https://github.com/blog/15
 
 `read:org` - to read members in an organization.
 
-This token can be created in Github under `Settings -> Applications -> Personal Access Tokens`
+This token can be created in Github under Settings > [Personal Access Tokens](https://github.com/settings/tokens)
 
 Note: the user must be a member of the organization you are trying to audit.
 
@@ -62,15 +62,21 @@ When you run start the app, it'll ask you for this info.
 
 #### Via Dockerhub
 
+https://secure.gravatar.com/avatar/26da7b36ff8bb5db4211400358dc7c4e.jpg
+
 [Dockerhub Link](https://registry.hub.docker.com/u/jfalken/github-commit-crawler/) 
 
 First, pull Dockerfile from Dockerhub
 
-1. `docker pull jfalken/github-commit-crawler`
+```
+docker pull jfalken/github-commit-crawler
+```
 
 Then, run the image to create a container, mapping a local port (5000) to the container's exposed port (5000)
 
-2. `docker run -d -p 5000:5000 jfalken/github-commit-crawler`
+```
+docker run -d -p 5000:5000 jfalken/github-commit-crawler
+```
 
 #### Via Github
 
@@ -91,16 +97,14 @@ If you've used `docker pull` to install, you can skip step this as your image is
 1. Docker needs to be installed, see [docker installation guides](https://docs.docker.com/installation/)
 2. Build the Docker Image
    
-   From the directory with the `Dockerfile`:
-   
-   `sudo docker build -t jfalken/ghcc .`
+   From the directory with the `Dockerfile`, `sudo docker build -t jfalken/ghcc .`
    
    You can use a different tag (-t) if you wish.
    
    This will build the image; it should take a few minutes. The output should look like:
    
    ```bash
-   Sending build context to Docker daemon
+Sending build context to Docker daemon
 Step 0 : FROM mongo:latest
 Step 1 : MAINTAINER jfalken <chris.sandulow@gmail.com>
 Step 2 : RUN apt-get update && apt-get upgrade -y && apt-get install -y python   python-dev   python-distribute   python-pip   libyaml-dev   supervisor &&   easy_install -U pip
@@ -112,30 +116,29 @@ Step 7 : EXPOSE 5000
 Step 8 : COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 Step 9 : CMD /usr/bin/supervisord
 Successfully built 1eed6b7b7c1f
- ```
- 
+```
+
 3. You can list the docker images you have with `sudo docker images`:
 
-```bash
+   ```bash
 $ sudo docker images
 
 REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 jfalken/ghcc       latest              1eed6b7b7c1f        23 minutes ago      705 MB
 ```
 
-Note the IMAGE ID from above; once you RUN this image, it will create a container.
+   Note the IMAGE ID from above; once you RUN this image, it will create a container.
 
 4. Run the image to create a container
 
-```bash
+   ```bash
 $ sudo docker run -d -p 5000:5000 1eed
 ```
 
-We use `-d` to detach the container and let it run in the background
+   We use `-d` to detach the container and let it run in the background
 
-We use `-p 5000:5000` to map `:5000` on the localhost to the exposted port `:5000` of the container
-
-and lastly `1eed` is the image id we wish to run; note we don't need to use the full ID. Just something that is unambiguous.
+   We use `-p 5000:5000` to map `:5000` on the localhost to the exposted port `:5000` of the container
+   and lastly `1eed` is the image id we wish to run; note we don't need to use the full ID. Just something that is unambiguous.
 
 We can confirm this is running with `sudo docker ps`
 
