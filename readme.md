@@ -103,8 +103,8 @@ If you've used `docker pull` to install, you can skip step this as your image is
    
    This will build the image; it should take a few minutes. The output should look like:
    
-```bash
- Sending build context to Docker daemon
+   ```bash
+Sending build context to Docker daemon
 Step 0 : FROM mongo:latest
 Step 1 : MAINTAINER jfalken <chris.sandulow@gmail.com>
 Step 2 : RUN apt-get update && apt-get upgrade -y && apt-get install -y python   python-dev   python-distribute   python-pip   libyaml-dev   supervisor &&   easy_install -U pip
@@ -117,10 +117,10 @@ Step 8 : COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 Step 9 : CMD /usr/bin/supervisord
 Successfully built 1eed6b7b7c1f
 ```
- 
+
 3. You can list the docker images you have with `sudo docker images`:
 
-```bash
+   ```bash
 $ sudo docker images
 
 REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
@@ -131,7 +131,7 @@ Note the IMAGE ID from above; once you RUN this image, it will create a containe
 
 4. Run the image to create a container
 
-```bash
+   ```bash
 $ sudo docker run -d -p 5000:5000 1eed
 ```
 
