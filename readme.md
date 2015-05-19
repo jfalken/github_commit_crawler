@@ -17,14 +17,18 @@ Within MongoDB, the document looks like:
 ```js
 {
   "_id": ObjectId("54a6f232a0b7f9f39eb749b0"),
-  "blob": "https://github.com/jfalken/audit_test/blob/e69279825940f4a562300f75f00dab864a91bd1e/audit_test2.txt",
+  "blob": 
+    "https://github.com/jfalken/audit_test/blob/e69279825940f4a562300f75f00dab864a91bd1e/audit_test2.txt",
   "audit_date": ISODate("2015-01-02T19:32:01.992Z"),
-  "commit_url": "https://api.github.com/repos/jfalken/audit_test/commits/e69279825940f4a562300f75f00dab864a91bd1e",
+  "commit_url": 
+    "https://api.github.com/repos/jfalken/audit_test/commits/e69279825940f4a562300f75f00dab864a91bd1e",
   "uid": "jfalken-2490741299",
   "author": "jfalken",
   "matched": "BEGIN RSA PRIVATE KEY",
-  "html_url": "https://github.com/jfalken/audit_test/commit/e69279825940f4a562300f75f00dab864a91bd1e",
-  "string": "@@ -1,2 +1,2 @@\n-BEGIN RSA PRIVATE KEY\n+BEGIN RSA PRIVATE KEY2\n sample.\n\\ No newline at end of file"
+  "html_url": 
+    "https://github.com/jfalken/audit_test/commit/e69279825940f4a562300f75f00dab864a91bd1e",
+  "string": 
+    "@@ -1,2 +1,2 @@\n-BEGIN RSA PRIVATE KEY\n+BEGIN RSA PRIVATE KEY2\n sample.\n\\ No newline at end of file"
 }
 ```
 
@@ -52,7 +56,7 @@ This script requires a Github [personal access token](https://github.com/blog/15
 
 `read:org` - to read members in an organization.
 
-This token can be created in Github under `Settings -> Applications -> Personal Access Tokens`
+This token can be created in Github under Settings > [Personal Access Tokens](https://github.com/settings/tokens)
 
 Note: the user must be a member of the organization you are trying to audit.
 
@@ -62,15 +66,21 @@ When you run start the app, it'll ask you for this info.
 
 #### Via Dockerhub
 
+https://secure.gravatar.com/avatar/26da7b36ff8bb5db4211400358dc7c4e.jpg
+
 [Dockerhub Link](https://registry.hub.docker.com/u/jfalken/github-commit-crawler/) 
 
 First, pull Dockerfile from Dockerhub
 
-1. `docker pull jfalken/github-commit-crawler`
+```
+docker pull jfalken/github-commit-crawler
+```
 
 Then, run the image to create a container, mapping a local port (5000) to the container's exposed port (5000)
 
-2. `docker run -d -p 5000:5000 jfalken/github-commit-crawler`
+```
+docker run -d -p 5000:5000 jfalken/github-commit-crawler
+```
 
 #### Via Github
 
@@ -93,14 +103,16 @@ If you've used `docker pull` to install, you can skip step this as your image is
    
    From the directory with the `Dockerfile`:
    
-   `sudo docker build -t jfalken/ghcc .`
+```
+sudo docker build -t jfalken/ghcc .
+```
    
    You can use a different tag (-t) if you wish.
    
    This will build the image; it should take a few minutes. The output should look like:
    
-   ```bash
-   Sending build context to Docker daemon
+```bash
+Sending build context to Docker daemon
 Step 0 : FROM mongo:latest
 Step 1 : MAINTAINER jfalken <chris.sandulow@gmail.com>
 Step 2 : RUN apt-get update && apt-get upgrade -y && apt-get install -y python   python-dev   python-distribute   python-pip   libyaml-dev   supervisor &&   easy_install -U pip
@@ -112,7 +124,7 @@ Step 7 : EXPOSE 5000
 Step 8 : COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 Step 9 : CMD /usr/bin/supervisord
 Successfully built 1eed6b7b7c1f
- ```
+```
  
 3. You can list the docker images you have with `sudo docker images`:
 
