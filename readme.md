@@ -127,7 +127,7 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 jfalken/ghcc       latest              1eed6b7b7c1f        23 minutes ago      705 MB
 ```
 
-Note the IMAGE ID from above; once you RUN this image, it will create a container.
+   Note the IMAGE ID from above; once you RUN this image, it will create a container.
 
 4. Run the image to create a container
 
@@ -135,13 +135,12 @@ Note the IMAGE ID from above; once you RUN this image, it will create a containe
 $ sudo docker run -d -p 5000:5000 1eed
 ```
 
-We use `-d` to detach the container and let it run in the background
+   We use `-d` to detach the container and let it run in the background
 
-We use `-p 5000:5000` to map `:5000` on the localhost to the exposted port `:5000` of the container
+   We use `-p 5000:5000` to map `:5000` on the localhost to the exposted port `:5000` of the container
+   and lastly `1eed` is the image id we wish to run; note we don't need to use the full ID. Just something that is unambiguous.
 
-and lastly `1eed` is the image id we wish to run; note we don't need to use the full ID. Just something that is unambiguous.
-
-We can confirm this is running with `sudo docker ps`
+   We can confirm this is running with `sudo docker ps`
 
 ```bash
 $ docker ps
