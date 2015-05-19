@@ -62,7 +62,7 @@ When you run start the app, it'll ask you for this info.
 
 #### Via Dockerhub
 
-https://secure.gravatar.com/avatar/26da7b36ff8bb5db4211400358dc7c4e.jpg
+![DockerHubLogo](https://secure.gravatar.com/avatar/26da7b36ff8bb5db4211400358dc7c4e.jpg)
 
 [Dockerhub Link](https://registry.hub.docker.com/u/jfalken/github-commit-crawler/) 
 
