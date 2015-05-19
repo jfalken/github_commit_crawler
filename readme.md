@@ -58,9 +58,9 @@ Note: the user must be a member of the organization you are trying to audit.
 
 When you run start the app, it'll ask you for this info.
 
-### Get the Source
+### Installation
 
-#### Via Dockerhub
+#### Installation via Dockerhub
 
 ![DockerHubLogo](https://secure.gravatar.com/avatar/26da7b36ff8bb5db4211400358dc7c4e.jpg)
 
@@ -78,21 +78,17 @@ Then, run the image to create a container, mapping a local port (5000) to the co
 docker run -d -p 5000:5000 jfalken/github-commit-crawler
 ```
 
-#### Via Github
+### Installation via Dockerfile
+
+If you installed via DockerHub, skip this section as your image is already built - scroll down to `Connecting`.
 
 You can `git clone git@github.com:10gen/github_commit_crawler.git`
 
 Alternatively, download the zip from Github and extract it to wherever you want.
 
-### Edit Keywords
+### Edit Keywords (optional)
 
 Edit the file `ghcc_process/libs/keywords.py`, to include any additional keywords you want to search for. These keywords are case insensitive. Its a good idea to include keywords that are company sensitive and likely should not exist in a public repo. 
-
-### Docker
-
-The Docker container will get you started quickly. 
-
-If you've used `docker pull` to install, you can skip step this as your image is already built; scroll down to `Connecting`.
 
 1. Docker needs to be installed, see [docker installation guides](https://docs.docker.com/installation/)
 2. Build the Docker Image
