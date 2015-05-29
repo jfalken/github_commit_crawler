@@ -101,7 +101,7 @@ Edit the file `ghcc_process/libs/keywords.py`, to include any additional keyword
    
    ```bash
 Sending build context to Docker daemon
-Step 0 : FROM mongo:latest
+Step 0 : FROM mongo:2.6
 Step 1 : MAINTAINER jfalken <chris.sandulow@gmail.com>
 Step 2 : RUN apt-get update && apt-get upgrade -y && apt-get install -y python   python-dev   python-distribute   python-pip   libyaml-dev   supervisor &&   easy_install -U pip
 Step 3 : ADD /ghcc_process ghcc_process
