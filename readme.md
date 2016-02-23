@@ -167,7 +167,7 @@ If you are using Docker on Windows or OSX, you have to use boot2docker. Details 
 
 ### Python
 
-The Dockerfile and Docker container is intended for eval purposes. You could run this in a prod environment using Docker, but we currently use a python virtualenv w/ gunicorn to run the applicatio nativleu.
+The Dockerfile and Docker container is intended for eval purposes. You could run this in a prod environment using Docker, but we currently use a python virtualenv w/ gunicorn to run the application natively.
 
 1. Setup a host w/ MongoDB running
 2. Create a virtual environment
@@ -179,7 +179,7 @@ Results will go into you local mongodb database.
 ## Limitations and TODOs
 
 * This only looks at _public_ events - if you want to audit commits to private repos, we don't do that yet.
-* Only the last 300 commits are checked, we don't go back furhter in time. This tool is intended to be run fairly frequently (we run every 30 minutes)
+* Only the last 300 commits are checked, we don't go back further in time. This tool is intended to be run fairly frequently (we run every 30 minutes)
 * Check out [Gitrob](https://github.com/michenriksen/gitrob), a similar tool with a much prettier interface.
 * We only check push_events. Not others, yet
 * We don't look at public gists yet.
@@ -202,15 +202,15 @@ To contribute, please fork and submit a PR.
 	(default)chris:/ $ docker start 031b
 	```
 
-	Where `031b` is the conatiner ID. This will remove the lock, then restart all the things.
+	Where `031b` is the container ID. This will remove the lock, then restart all the things.
 
 * GitHub permits 5,000 API calls per token per hour. In an org of about ~300 users, we are able to run `ghcc` every 30 minutes and not hit that limit. If you have a larger org, you may want to run it less frequently. We don't support using multiple tokens across a distributed workload, as I believe this is a violation of Github's terms.
 
 * Docker Gotchas:
  - We log to a file, not STDOUT. So `docker logs` won't work like it should. This is why the web app has a log viewer.
- - The crawler runs once when conatiner starts, and it runs once. If u want this run continously, you could stop/start the container every X minutes via an external process, or modify the ghcc scripts.
+ - The crawler runs once when conatiner starts, and it runs once. If you want this run continuously, you could stop/start the container every X minutes via an external process, or modify the ghcc scripts.
 
-* We dont do deduplication on anything. So you'll see multiple hits on the same file if multiple keywords match.
+* We don't do deduplication on anything. So you'll see multiple hits on the same file if multiple keywords match.
 
 ## Contributing
 
